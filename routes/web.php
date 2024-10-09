@@ -13,10 +13,11 @@ Route::get('/posts', function () {
     return view('posts', ['title' => 'Blog', 'posts' => Post::all()]);
 });
 
-// Tampilkan Post yang diklik 
-Route::get('/post/{slug}', function($slug){
+// Tampilkan Post berdasarkan kolom slug
+Route::get('/post/{post:slug}', function(Post $post){
     // dd($post);
-    return view('post', ['title' => 'Single Post', 'dataPost' => Post::find($slug)]);
+    // $post = Post::find($post);
+    return view('post', ['title' => 'Single Post', 'dataPost' => $post]);
 });
 
 Route::get('/contact', function () {
