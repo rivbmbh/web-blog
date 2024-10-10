@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,5 +44,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function posts(): HasMany
+    {
+        // Tambahkan paramater kedua jika anda memodifikasi nama kolom pada table POST
+        // secara default laravel akan mencari 'user_id' karna menyesuaikan dengan tablenya jika anda membuat penamaan kolom yang berbeda maka tambahkan parameter kedua seperti dibawah ini
+        return $this->hasMany(Post::class, 'author_id');// beri tau laravel diberalasi dengan kolom author_id bukan user_id pada table post
     }
 }

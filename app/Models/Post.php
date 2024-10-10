@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
@@ -12,8 +13,20 @@ class Post extends Model
     #protected $table = 'blog_posts';// Tapi jika berbeda nama tablenya tinggal buat seperti baris ini
     #protected $primaryKey = 'post_id';// Begitu juga dengan id jika, laravel akan memberi primary key pada suatu table kecuali ada kolom id jika berbeda buat seperti baris ini
 
-    protected $fillable = ['title', 'author_id', 'slug', 'body'];
+    protected $fillable = ['title', 'author_id', 'category_id', 'slug', 'body'];
     
+    // Method ini otomatis akan menampilkan nama author
+    // intinya menampilkan bukan author_id tapi langsung nama author yang diambil dari table user
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
      // public static function find($slug): array
          // {
          //     // Function Callback
