@@ -9,10 +9,10 @@ class Post extends Model
 {
     use HasFactory;
      // Secara default laravel akan menghubungkan table jika namanya berjamak contoh table=posts, ketika kita membuat model harus Post (tidak ada 's' diakhir) otomatis akan terhubung ke table tsb. 
-    protected $table = 'blog_posts';// Tapi jika berbeda nama tablenya tinggal buat seperti baris ini
-    protected $primaryKey = 'post_id';// Begitu juga dengan id jika, laravel akan memberi primary key pada suatu table kecuali ada kolom id jika berbeda buat seperti baris ini
+    #protected $table = 'blog_posts';// Tapi jika berbeda nama tablenya tinggal buat seperti baris ini
+    #protected $primaryKey = 'post_id';// Begitu juga dengan id jika, laravel akan memberi primary key pada suatu table kecuali ada kolom id jika berbeda buat seperti baris ini
 
-    protected $fillable = ['title', 'author', 'slug', 'body'];
+    protected $fillable = ['title', 'author_id', 'slug', 'body'];
     
      // public static function find($slug): array
          // {
