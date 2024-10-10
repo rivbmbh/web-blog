@@ -27,3 +27,7 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about', ['email' => 'rivaldo@gmail.com', 'sosial_media' => '@rivaldo13', 'title' => 'About | Page']);
 });
+
+// Route::get('/tes', function () {
+//     return view('tes');
+// });
