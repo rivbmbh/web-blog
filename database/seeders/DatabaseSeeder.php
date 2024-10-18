@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
             ?? memanggil seeder dari class lain dan menjalankannya
         */
         $this->call([CategorySeeder::class, UserSeeder::class]);
-        Post::factory(50)->recycle([
+        Post::factory(100)->recycle([
             Category::all(),
             User::all(),
         ])->create();

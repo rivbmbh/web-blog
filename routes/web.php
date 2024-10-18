@@ -10,7 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog', 'posts' => Post::all()]);
+    $posts = Post::with(['author','category'])->latest()->get();// Eager Loading
+    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
 });
 
 // Tampilkan Post berdasarkan kolom slug
@@ -20,11 +21,13 @@ Route::get('/post/{post:slug}', function(Post $post){
 });
 
 Route::get('/authors/{user:username}', function(User $user){
-    return view('posts', ['title' => count($user->posts) . ' Article by : ' . $user->name, 'posts' => $user->posts]);
+    $postsAuthor = $user->posts->load(['category','author']); // Lazy Eager Loading
+    return view('posts', ['title' => count($postsAuthor) . ' Article by : ' . $user->name, 'posts' => $postsAuthor]);
 });
 
 Route::get('/categories/{category:category_slug}', function(Category $category){
-    return view('posts', ['title' => count($category->posts) . ' Articles in Category : ' . $category->category_name, 'posts' => $category->posts]);
+    $postsCategory = $category->posts->load(['category','author']); // Lazy Eager Loading
+    return view('posts', ['title' => count($postsCategory) . ' Articles in Category : ' . $category->category_name, 'posts' => $postsCategory]);
 });
 
 Route::get('/contact', function () {

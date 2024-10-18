@@ -31,5 +31,9 @@ class CategorySeeder extends Seeder
             'category_name' => 'Design Graphic',
             'category_slug' =>'design-graphic',
         ]);
+        Category::create([
+            'category_name' => 'Web Design',
+            'category_slug' =>'web-design',
+        ]);
     }
 }
