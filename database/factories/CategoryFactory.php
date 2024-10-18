@@ -18,10 +18,18 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
+            /*
+                WPU Version
+            */
+            'category_name' => fake()->sentence(rand(1,2), false),
+            'category_slug' => Str::slug(fake()->sentence(rand(1,2)), false),
+            
             // 'category_name' => fake()->randomElement(['Technology', 'Health', 'Business', 'Education', 'Web Programming', 'Mobile Programming', 'Sport', 'E-Sport']),
-            'category_name' => fake()->words(3, true),
+            
+            #'category_name' => fake()->words(3, true),
+            
             // Str slug bawaan laravel menggunakan '-' bukan spasi
-            'category_slug' => Str::slug(fake()->sentence()),// output = judul-slug-satu
+            #'category_slug' => Str::slug(fake()->sentence()),// output = judul-slug-satu
         ];
     }
 }

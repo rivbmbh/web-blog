@@ -5,11 +5,13 @@
         <a href="/post/{{ $post['slug'] }}">
             <h2 class="mb-1 text-3xl font-bold tracking-tight text-gray-900">{{ $post['title'] }}</h2>
         </a>
-        <div class="text-base text-gray-500">
-            <a class="hover:underline" href="/authors/{{ $post->author->id }}">By {{ $post->author->name }} in</a>
-            <a class="hover:underline" href="/categories/{{ $post->category->id }}">{{ $post->category->category_name }}</a>
+        <div class=""">
+            By 
+            <a class="text-base font-semibold text-gray-500 hover:underline" href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a>
+            in
+            <a class="text-base font-semibold text-gray-500 hover:underline" href="/categories/{{ $post->category->category_slug }}">{{ $post->category->category_name }}</a>
             <span> | {{ $post->created_at->diffForHumans() }}</span>
-        </div>
+        </div>   
         <p class="my-4 font-light">
             {{-- tampilkan isi artikel dengan limit 100 char, gunakan helper laravel `Str::limit()` --}}
             {!! Str::limit($post['body'], '130') !!}
