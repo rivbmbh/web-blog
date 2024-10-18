@@ -14,7 +14,11 @@ class Post extends Model
     #protected $primaryKey = 'post_id';// Begitu juga dengan id jika, laravel akan memberi primary key pada suatu table kecuali ada kolom id jika berbeda buat seperti baris ini
 
     protected $fillable = ['title', 'author_id', 'category_id', 'slug', 'body'];
-    
+    /*
+        agar tidak mengubah secara langsung pada route / controller cukup kita terapkan secara default dengan eager loading dibawah ini
+    */
+    protected $with = ['author', 'category'];
+
     // Method ini otomatis akan menampilkan nama author
     // intinya menampilkan bukan author_id tapi langsung nama author yang diambil dari table user
     public function author(): BelongsTo
