@@ -18,22 +18,27 @@ class CategorySeeder extends Seeder
         Category::create([
             'category_name' => 'Blog Programming',
             'category_slug' => 'blog-programming',
+            'color' => 'emerald',
         ]);
         Category::create([
             'category_name' => 'Artifcial Intelegent',
             'category_slug' => 'artifcial-intelegent',
+            'color' => 'zinc',
         ]);
         Category::create([
             'category_name' => 'Cyber Security',
             'category_slug' => 'cyber-security',
+            'color' => 'primary',
         ]);
         Category::create([
             'category_name' => 'Design Graphic',
             'category_slug' =>'design-graphic',
+            'color' => 'amber',
         ]);
         Category::create([
             'category_name' => 'Web Design',
             'category_slug' =>'web-design',
+            'color' => 'lime',
         ]);
     }
 }
